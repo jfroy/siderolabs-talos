@@ -633,7 +633,7 @@ COPY --from=talosctl-all /talosctl-linux-${TARGETARCH} /talosctl
 ARG TAG
 ENV VERSION=${TAG}
 LABEL "alpha.talos.dev/version"="${VERSION}"
-LABEL org.opencontainers.image.source=https://github.com/siderolabs/talos
+LABEL org.opencontainers.image.source=https://github.com/jfroy/siderolabs-talos
 ENTRYPOINT ["/talosctl"]
 
 # The kernel target is the linux kernel.
@@ -1008,7 +1008,7 @@ COPY --from=initramfs-archive /initramfs.xz /initramfs-${TARGETARCH}.xz
 
 FROM scratch AS talos
 COPY --from=rootfs / /
-LABEL org.opencontainers.image.source=https://github.com/siderolabs/talos
+LABEL org.opencontainers.image.source=https://github.com/jfroy/siderolabs-talos
 ENTRYPOINT ["/sbin/init"]
 
 # The installer target generates an image that can be used to install Talos to
@@ -1079,7 +1079,7 @@ FROM installer-base-image-squashed AS installer-base
 ARG TAG
 ENV VERSION=${TAG}
 LABEL "alpha.talos.dev/version"="${VERSION}"
-LABEL org.opencontainers.image.source=https://github.com/siderolabs/talos
+LABEL org.opencontainers.image.source=https://github.com/jfroy/siderolabs-talos
 ENTRYPOINT ["/bin/installer"]
 
 # Imager can be thought of as an extended installer.
